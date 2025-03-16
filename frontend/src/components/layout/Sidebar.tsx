@@ -41,30 +41,30 @@ const Sidebar = () => {
 
   return (
     <div className="hidden md:flex md:flex-shrink-0">
-      <div className="flex flex-col w-64">
+      <div className="flex flex-col w-60">
         <div className="flex flex-col h-0 flex-1 bg-gray-800">
-          <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center flex-shrink-0 px-4">
-              <h1 className="text-white text-2xl font-bold">李府管家系统</h1>
+          <div className="flex-1 flex flex-col pt-4 pb-3 overflow-y-auto">
+            <div className="flex items-center flex-shrink-0 px-4 mb-2">
+              <h1 className="text-white text-xl font-bold">李府管家系统</h1>
             </div>
-            <nav className="mt-5 flex-1 px-2 space-y-1">
+            <nav className="mt-3 flex-1 px-2 space-y-0.5">
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.children ? (
                     <>
                       <div
-                        className="group flex items-center justify-between px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer"
+                        className="group flex items-center justify-between px-2 py-1.5 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer"
                         onClick={() => toggleExpand(item.href)}
                       >
                         <div className="flex items-center">
                           <item.icon
-                            className="mr-3 flex-shrink-0 h-6 w-6"
+                            className="mr-2 flex-shrink-0 h-3 w-3"
                             aria-hidden="true"
                           />
                           {item.name}
                         </div>
                         <svg
-                          className={`h-5 w-5 transform ${
+                          className={`h-4 w-4 transform ${
                             expandedItems.includes(item.href) ? 'rotate-90' : ''
                           } transition-transform duration-200`}
                           viewBox="0 0 20 20"
@@ -79,13 +79,13 @@ const Sidebar = () => {
                         </svg>
                       </div>
                       {expandedItems.includes(item.href) && (
-                        <div className="ml-8 space-y-1 mt-1">
+                        <div className="ml-6 space-y-0.5 mt-0.5">
                           {item.children.map((child) => (
                             <NavLink
                               key={child.name}
                               to={child.href}
                               className={({ isActive }) =>
-                                `group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+                                `group flex items-center px-2 py-1.5 text-xs font-medium rounded-md ${
                                   isActive
                                     ? 'bg-gray-900 text-white'
                                     : 'text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -93,7 +93,7 @@ const Sidebar = () => {
                               }
                             >
                               <child.icon
-                                className="mr-3 flex-shrink-0 h-5 w-5"
+                                className="mr-2 flex-shrink-0 h-2.5 w-2.5"
                                 aria-hidden="true"
                               />
                               {child.name}
@@ -106,7 +106,7 @@ const Sidebar = () => {
                     <NavLink
                       to={item.href}
                       className={({ isActive }) =>
-                        `group flex items-center px-2 py-2 text-sm font-medium rounded-md ${
+                        `group flex items-center px-2 py-1.5 text-sm font-medium rounded-md ${
                           isActive
                             ? 'bg-gray-900 text-white'
                             : 'text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -114,7 +114,7 @@ const Sidebar = () => {
                       }
                     >
                       <item.icon
-                        className="mr-3 flex-shrink-0 h-6 w-6"
+                        className="mr-2 flex-shrink-0 h-3 w-3"
                         aria-hidden="true"
                       />
                       {item.name}

@@ -6,6 +6,22 @@
   body {
     @apply bg-gray-50 text-gray-900;
   }
+  
+  /* 全局限制heroicons图标大小 - 更具体的选择器 */
+  .h-3.w-3[aria-hidden="true"],
+  .h-4.w-4[aria-hidden="true"],
+  .h-5.w-5[aria-hidden="true"],
+  .h-6.w-6[aria-hidden="true"],
+  .h-8.w-8[aria-hidden="true"] {
+    max-width: 14px !important;
+    max-height: 14px !important;
+  }
+  
+  /* 特定针对heroicons组件 */
+  svg[data-slot="icon"] {
+    width: 14px !important;
+    height: 14px !important;
+  }
 }
 
 @layer components {
@@ -30,4 +46,80 @@
   .label {
     @apply block text-sm font-medium text-gray-700 mb-1;
   }
+} 
+
+/* 自定义 Ant Design 组件样式 */
+.ant-btn-sm {
+  font-size: 12px !important;
+  height: 24px !important;
+  padding: 0px 7px !important;
+}
+
+.ant-btn > .anticon {
+  font-size: 12px !important;
+}
+
+.ant-table-small .ant-table-thead > tr > th {
+  padding: 8px 8px !important;
+  font-size: 13px !important;
+}
+
+.ant-table-small .ant-table-tbody > tr > td {
+  padding: 6px 8px !important;
+  font-size: 12px !important;
+}
+
+.ant-descriptions-small .ant-descriptions-item-label,
+.ant-descriptions-small .ant-descriptions-item-content {
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+}
+
+.ant-form-item-label > label {
+  font-size: 13px !important;
+}
+
+.ant-select-item {
+  font-size: 12px !important;
+  min-height: 28px !important;
+  padding: 4px 8px !important;
+}
+
+.ant-select-selection-item {
+  font-size: 12px !important;
+}
+
+.ant-input {
+  font-size: 12px !important;
+}
+
+.ant-form-small .ant-form-item {
+  margin-bottom: 12px !important;
+}
+
+.ant-switch-small {
+  min-width: 28px !important;
+  height: 16px !important;
+  line-height: 16px !important;
+}
+
+.ant-switch-small .ant-switch-handle {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.ant-switch-small.ant-switch-checked .ant-switch-handle {
+  left: calc(100% - 14px) !important;
+}
+
+.ant-pagination-item, 
+.ant-pagination-prev, 
+.ant-pagination-next {
+  min-width: 28px !important;
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
+.ant-pagination-item a {
+  font-size: 12px !important;
 } 

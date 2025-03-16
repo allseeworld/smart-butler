@@ -29,14 +29,14 @@ const Header = () => {
             className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
           >
             <span className="sr-only">查看通知</span>
-            <BellIcon className="h-6 w-6" aria-hidden="true" />
+            <BellIcon className="h-4 w-4" aria-hidden="true" />
           </button>
 
           {/* 个人资料下拉菜单 */}
           <Menu as="div" className="relative">
             <Menu.Button className="flex items-center max-w-xs text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
               <span className="sr-only">打开用户菜单</span>
-              <UserCircleIcon className="h-8 w-8 text-gray-400" aria-hidden="true" />
+              <UserCircleIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
             </Menu.Button>
             <Transition
               as={Fragment}
