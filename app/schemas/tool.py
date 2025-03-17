@@ -1,5 +1,5 @@
 from typing import List, Optional, Dict, Any
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from datetime import datetime
 
 class ToolBase(BaseModel):
@@ -10,6 +10,9 @@ class ToolBase(BaseModel):
     description: Optional[str] = None
     auth_type: Optional[str] = None
     required_role: Optional[str] = None
+    # MCP相关字段
+    input_schema: Optional[Dict[str, Any]] = None
+    capabilities: Optional[List[str]] = None
 
 class ToolCreate(ToolBase):
     """工具创建模型"""
@@ -24,6 +27,9 @@ class ToolUpdate(BaseModel):
     auth_info: Optional[Dict[str, Any]] = None
     required_role: Optional[str] = None
     status: Optional[str] = None
+    # MCP相关字段
+    input_schema: Optional[Dict[str, Any]] = None
+    capabilities: Optional[List[str]] = None
 
 class ToolResponse(ToolBase):
     """工具响应模型"""
@@ -38,6 +44,9 @@ class ToolResponse(ToolBase):
 class ToolInvoke(BaseModel):
     """工具调用请求模型"""
     params: Dict[str, Any]
+    # MCP相关字段
+    context_id: Optional[str] = None
+    client_id: Optional[str] = None
 
 class ToolInvocationResponse(BaseModel):
     """工具调用响应模型"""
@@ -48,9 +57,34 @@ class ToolInvocationResponse(BaseModel):
     error: Optional[str] = None
     started_at: datetime
     finished_at: Optional[datetime] = None
+    # MCP相关字段
+    context_id: Optional[str] = None
+    client_id: Optional[str] = None
 
     class Config:
         from_attributes = True
+
+# MCP特定模型
+class MCPToolDefinition(BaseModel):
+    """MCP工具定义模型"""
+    name: str
+    description: Optional[str] = None
+    capabilities: Optional[List[str]] = None
+    inputSchema: Dict[str, Any] = Field(..., description="JSON Schema for the tool's parameters")
+
+class MCPToolsListResponse(BaseModel):
+    """MCP工具列表响应"""
+    tools: List[MCPToolDefinition]
+    nextCursor: Optional[str] = None
+
+class MCPToolCallRequest(BaseModel):
+    """MCP工具调用请求"""
+    name: str
+    arguments: Dict[str, Any]
+
+class MCPToolCallResponse(BaseModel):
+    """MCP工具调用响应"""
+    content: List[Dict[str, Any]]
 
 class ToolApprovalBase(BaseModel):
     """工具审批基础模型"""

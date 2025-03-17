@@ -12,6 +12,8 @@ const TaskCreate = lazy(() => import('./pages/task/TaskCreate'))
 const ToolList = lazy(() => import('./pages/tool/ToolList'))
 const ToolDetail = lazy(() => import('./pages/tool/ToolDetail'))
 const ToolRegister = lazy(() => import('./pages/tool/ToolRegister'))
+const MCPToolList = lazy(() => import('./pages/tool/MCPToolList'))
+const MCPToolDetail = lazy(() => import('./pages/tool/MCPToolDetail'))
 const KnowledgeSearch = lazy(() => import('./pages/knowledge/KnowledgeSearch'))
 const KnowledgeDetail = lazy(() => import('./pages/knowledge/KnowledgeDetail'))
 const KnowledgeCreate = lazy(() => import('./pages/knowledge/KnowledgeCreate'))
@@ -45,6 +47,10 @@ function App() {
             <Route index element={<ToolList />} />
             <Route path="register" element={<ToolRegister />} />
             <Route path=":toolId" element={<ToolDetail />} />
+            <Route path="mcp">
+              <Route index element={<MCPToolList />} />
+              <Route path=":toolName" element={<MCPToolDetail />} />
+            </Route>
           </Route>
           
           <Route path="knowledge">
